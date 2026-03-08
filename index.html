@@ -15,10 +15,9 @@
         
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #0c4a3e 0%, #064e3b 50%, #022c22 100%);
-            color: #ecfdf5;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #f1f5f9;
             overflow: hidden;
-            touch-action: pan-y;
             height: 100vh;
             width: 100vw;
         }
@@ -27,7 +26,6 @@
             font-family: 'Noto Naskh Arabic', serif;
         }
 
-        /* Container utama untuk swipe */
         .app-container {
             display: flex;
             width: 400%;
@@ -36,13 +34,12 @@
             will-change: transform;
         }
 
-        /* Setiap halaman full screen */
         .page {
             width: 25%;
             height: 100vh;
             overflow-y: auto;
             overflow-x: hidden;
-            padding: 1rem;
+            padding: 0.5rem;
             position: relative;
             -webkit-overflow-scrolling: touch;
         }
@@ -55,16 +52,15 @@
             scrollbar-width: none;
         }
 
-        /* Glass effect dengan tema hijau */
         .glass {
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 1rem;
+            border-radius: 0.75rem;
         }
 
         .glass-strong {
-            background: rgba(6, 78, 59, 0.95);
+            background: rgba(15, 23, 42, 0.9);
             backdrop-filter: blur(20px);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -74,40 +70,29 @@
             font-feature-settings: "tnum";
         }
 
-        /* Navigation dots */
         .nav-dot {
-            width: 8px;
-            height: 8px;
+            width: 4px;
+            height: 4px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.3);
             transition: all 0.3s ease;
         }
 
         .nav-dot.active {
-            background: #34d399;
-            width: 24px;
-            border-radius: 4px;
+            background: #fbbf24;
+            width: 12px;
+            border-radius: 2px;
         }
 
-        /* Prayer cards dengan tema hijau/emerald */
         .prayer-card {
-            background: linear-gradient(135deg, rgba(52, 211, 153, 0.15) 0%, rgba(16, 185, 129, 0.15) 100%);
-            border: 1px solid rgba(52, 211, 153, 0.3);
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.15) 0%, rgba(245, 158, 11, 0.15) 100%);
+            border: 1px solid rgba(251, 191, 36, 0.3);
         }
 
         .prayer-active {
-            background: linear-gradient(135deg, rgba(52, 211, 153, 0.3) 0%, rgba(16, 185, 129, 0.3) 100%);
-            border: 2px solid #34d399;
-            box-shadow: 0 0 20px rgba(52, 211, 153, 0.3);
-        }
-
-        @keyframes swipeHint {
-            0%, 100% { transform: translateX(0); opacity: 0.5; }
-            50% { transform: translateX(10px); opacity: 1; }
-        }
-
-        .swipe-hint {
-            animation: swipeHint 2s infinite;
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.3) 0%, rgba(245, 158, 11, 0.3) 100%);
+            border: 2px solid #fbbf24;
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
         }
 
         .progress-ring {
@@ -126,7 +111,7 @@
         .home-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 0.75rem;
+            gap: 0.5rem;
         }
 
         @media (min-width: 640px) {
@@ -135,22 +120,55 @@
             }
         }
 
-        .schedule-item {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 0.5rem;
-            padding: 0.75rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            align-items: center;
+        .schedule-table {
+            display: flex;
+            flex-direction: column;
         }
 
-        .schedule-item:last-child {
+        .schedule-header {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 0.25rem;
+            padding: 0.02rem 0.5rem;
+            background: rgba(30, 41, 59, 0.5);
+            border-bottom: 3px solid rgba(251, 191, 36, 0.5);
+            font-size: 10px;
+            font-weight: 600;
+            color: #fbbf24;
+        }
+
+        .schedule-header span {
+            text-align: center;
+        }
+
+        .schedule-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 0.25rem;
+            padding: 0.02rem 0.5rem;
+            border-bottom: 3px solid rgba(255, 255, 255, 0.2);
+            align-items: center;
+            min-height: 8px;
+            background-image: none;
+            background-size: 100% 100%;
+        }
+
+        .schedule-row:last-child {
             border-bottom: none;
         }
 
+        .schedule-row > div,
+        .schedule-row > p {
+            text-align: center;
+        }
+
+        .schedule-row > div:first-child {
+            text-align: left;
+        }
+
         .schedule-today {
-            background: rgba(52, 211, 153, 0.1);
-            border-left: 3px solid #34d399;
+            background: rgba(251, 191, 36, 0.1);
+            border-left: 2px solid #fbbf24;
         }
 
         .bottom-nav {
@@ -162,7 +180,7 @@
         }
 
         .content-spacing {
-            padding-bottom: 80px;
+            padding-bottom: 70px;
         }
 
         .desktop-hint {
@@ -177,7 +195,7 @@
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background: #064e3b;
+                background: #0f172a;
                 z-index: 100;
                 align-items: center;
                 justify-content: center;
@@ -187,107 +205,99 @@
             }
         }
 
-        /* Khas Kotawaringin Timur - Sampit */
-        .location-badge {
-            background: linear-gradient(90deg, #059669 0%, #34d399 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .next-day-indicator {
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 0.5rem;
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .current-day-indicator {
+            background: rgba(251, 191, 36, 0.2);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            border-radius: 0.5rem;
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
         }
     </style>
 </head>
 <body>
 
-    <!-- Desktop Hint -->
     <div class="desktop-hint">
-        <div class="text-6xl mb-4">🌴</div>
+        <div class="text-6xl mb-4">📱</div>
         <h1 class="text-2xl font-bold text-white mb-2">Aplikasi Mobile</h1>
-        <p class="text-emerald-200">Gunakan perangkat mobile untuk pengalaman terbaik</p>
-        <p class="text-sm text-emerald-400 mt-2">Kotawaringin Timur - Kalimantan Tengah</p>
+        <p class="text-gray-400">Gunakan perangkat mobile atau resize browser untuk pengalaman terbaik</p>
     </div>
 
-    <!-- Main App -->
     <div class="app-container" id="appContainer">
         
         <!-- PAGE 1: HOME -->
         <div class="page" id="page-0">
             <div class="content-spacing">
-                <!-- Header -->
-                <div class="text-center mb-6 pt-4">
-                    <div class="inline-flex items-center justify-center w-12 h-12 mb-3 rounded-full bg-gradient-to-br from-emerald-400 to-green-600 shadow-lg shadow-emerald-500/30">
-                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <div class="text-center mb-3 pt-1">
+                    <div class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 mb-1 shadow-lg shadow-yellow-500/30">
+                        <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
                         </svg>
                     </div>
-                    <h1 class="text-xl font-bold location-badge">
+                    <h1 class="text-base font-bold bg-gradient-to-r from-yellow-200 to-amber-400 bg-clip-text text-transparent">
                         Kotawaringin Timur
                     </h1>
-                    <p class="text-xs text-emerald-200/70 mt-1">Sampit, Kalteng • Feb 2026</p>
+                    <p class="text-[10px] text-gray-400 mt-0.5">Feb 2026</p>
                     
-                    <!-- Live Clock -->
-                    <div class="mt-4 inline-block px-4 py-2 rounded-full glass">
-                        <span id="live-clock" class="text-xl font-bold text-emerald-400 time-font">--:--:--</span>
-                        <span class="text-xs text-emerald-300/70 ml-1">WIB</span>
+                    <div class="mt-2 inline-block px-3 py-1 rounded-full glass">
+                        <span id="live-clock" class="text-base font-bold text-yellow-400 time-font">--:--:--</span>
                     </div>
                 </div>
 
-                <!-- Status Card -->
-                <div class="glass p-4 mb-4 prayer-active rounded-2xl">
-                    <div class="flex items-center justify-between mb-3">
+                <div class="glass p-2.5 mb-2 prayer-active rounded-xl">
+                    <div class="flex items-center justify-between mb-1.5">
                         <div>
-                            <p class="text-xs text-emerald-200/70 uppercase tracking-wider">Status Puasa</p>
-                            <h2 id="home-status" class="text-lg font-bold text-white">Memuat...</h2>
+                            <p class="text-[10px] text-yellow-200/70 uppercase tracking-wider">Status</p>
+                            <h2 id="home-status" class="text-sm font-bold text-white">Memuat...</h2>
                         </div>
-                        <div class="relative w-16 h-16">
-                            <svg class="progress-ring w-16 h-16" viewBox="0 0 64 64">
-                                <circle class="text-emerald-800" stroke-width="4" stroke="currentColor" fill="transparent" r="28" cx="32" cy="32"/>
-                                <circle id="progress-circle" class="progress-ring-circle text-emerald-400" stroke-width="4" stroke-linecap="round" stroke="currentColor" fill="transparent" r="28" cx="32" cy="32" stroke-dasharray="175.9" stroke-dashoffset="175.9"/>
+                        <div class="relative w-12 h-12">
+                            <svg class="progress-ring w-12 h-12" viewBox="0 0 64 64">
+                                <circle class="text-gray-700" stroke-width="4" stroke="currentColor" fill="transparent" r="28" cx="32" cy="32"/>
+                                <circle id="progress-circle" class="progress-ring-circle text-yellow-400" stroke-width="4" stroke-linecap="round" stroke="currentColor" fill="transparent" r="28" cx="32" cy="32" stroke-dasharray="175.9" stroke-dashoffset="175.9"/>
                             </svg>
                             <div class="absolute inset-0 flex items-center justify-center">
-                                <span id="progress-text" class="text-xs font-bold text-white">0%</span>
+                                <span id="progress-text" class="text-[10px] font-bold text-white">0%</span>
                             </div>
                         </div>
                     </div>
                     <div class="text-center">
-                        <p id="home-countdown-label" class="text-xs text-emerald-200/70 mb-1">Menuju buka puasa</p>
-                        <p id="home-countdown" class="text-3xl font-bold text-white time-font tracking-wider">--:--:--</p>
+                        <p id="home-countdown-label" class="text-[10px] text-gray-400 mb-0.5">Menuju buka</p>
+                        <p id="home-countdown" class="text-xl font-bold text-white time-font tracking-wider">--:--:--</p>
                     </div>
                 </div>
 
-                <!-- Quick Info Grid -->
-                <div class="home-grid mb-4">
-                    <div class="glass p-3 text-center touch-feedback">
-                        <p class="text-xs text-emerald-200/70 mb-1">Imsak</p>
-                        <p id="home-imsak" class="text-lg font-bold text-blue-400 time-font">--:--</p>
+                <div class="home-grid mb-2">
+                    <div class="glass p-2 text-center touch-feedback">
+                        <p class="text-[10px] text-gray-400 mb-0.5">Imsak</p>
+                        <p id="home-imsak" class="text-sm font-bold text-blue-400 time-font">--:--</p>
                     </div>
-                    <div class="prayer-card p-3 text-center rounded-xl touch-feedback border-emerald-500/30">
-                        <p class="text-xs text-emerald-300 mb-1">Buka Puasa</p>
-                        <p id="home-maghrib" class="text-lg font-bold text-amber-400 time-font">--:--</p>
+                    <div class="prayer-card p-2 text-center rounded-lg touch-feedback">
+                        <p class="text-[10px] text-orange-200/70 mb-0.5">Buka</p>
+                        <p id="home-maghrib" class="text-sm font-bold text-orange-400 time-font">--:--</p>
                     </div>
-                    <div class="glass p-3 text-center touch-feedback">
-                        <p class="text-xs text-emerald-200/70 mb-1">Subuh</p>
-                        <p id="home-subuh" class="text-lg font-bold text-white time-font">--:--</p>
+                    <div class="glass p-2 text-center touch-feedback">
+                        <p class="text-[10px] text-gray-400 mb-0.5">Subuh</p>
+                        <p id="home-subuh" class="text-sm font-bold text-white time-font">--:--</p>
                     </div>
-                    <div class="glass p-3 text-center touch-feedback">
-                        <p class="text-xs text-emerald-200/70 mb-1">Isya</p>
-                        <p id="home-isya" class="text-lg font-bold text-white time-font">--:--</p>
+                    <div class="glass p-2 text-center touch-feedback">
+                        <p class="text-[10px] text-gray-400 mb-0.5">Isya</p>
+                        <p id="home-isya" class="text-sm font-bold text-white time-font">--:--</p>
                     </div>
                 </div>
 
-                <!-- Next Prayer -->
-                <div class="glass p-4 rounded-2xl">
-                    <p class="text-xs text-emerald-200/70 uppercase tracking-wider mb-3">Jadwal Selanjutnya</p>
+                <div class="glass p-4 rounded-xl">
+                    <p class="text-xs text-gray-400 uppercase tracking-wider mb-2">Jadwal Selanjutnya</p>
                     <div id="next-prayer-list" class="space-y-2">
-                        <!-- Dynamic content -->
                     </div>
-                </div>
-
-                <!-- Swipe Hint -->
-                <div class="flex items-center justify-center gap-2 mt-6 text-emerald-300/50 text-xs swipe-hint">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                    <span>Geser untuk jadwal lengkap</span>
                 </div>
             </div>
         </div>
@@ -295,224 +305,213 @@
         <!-- PAGE 2: FULL SCHEDULE -->
         <div class="page" id="page-1">
             <div class="content-spacing">
-                <div class="sticky top-0 z-10 bg-emerald-950/90 backdrop-blur-md pb-4 pt-2">
-                    <h2 class="text-lg font-bold text-white mb-3">Jadwal Lengkap</h2>
-                    <div class="relative">
-                        <input type="text" id="search-input" placeholder="Cari tanggal..." 
-                            class="w-full px-4 py-2 rounded-xl bg-emerald-900/50 border border-emerald-700 text-sm text-white placeholder-emerald-400/50 focus:outline-none focus:border-emerald-400">
-                        <svg class="absolute right-3 top-2.5 w-4 h-4 text-emerald-400/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                        </svg>
+                <div class="sticky top-0 z-10 bg-slate-900/90 backdrop-blur-md pb-1 pt-0.5">
+                    <h2 class="text-sm font-bold text-white">Jadwal Lengkap</h2>
+                </div>
+
+                <div class="glass rounded-xl overflow-hidden mt-1">
+                    <div class="schedule-table">
+                        <div class="schedule-header">
+                            <span>Tanggal</span>
+                            <span>Imsak</span>
+                            <span class="text-orange-400">Buka</span>
+                            <span>Isya</span>
+                        </div>
+                        <div id="schedule-list">
+                        </div>
                     </div>
                 </div>
 
-                <div class="glass rounded-2xl overflow-hidden mt-2">
-                    <div class="bg-emerald-900/50 p-3 text-xs font-semibold text-emerald-400 grid grid-cols-4 gap-2">
-                        <span>Tanggal</span>
-                        <span class="text-center">Imsak</span>
-                        <span class="text-center text-amber-400">Buka</span>
-                        <span class="text-center">Isya</span>
-                    </div>
-                    <div id="schedule-list" class="divide-y divide-emerald-800/30">
-                        <!-- Dynamic content -->
-                    </div>
-                </div>
-
-                <div class="h-4"></div>
+                <div class="h-1"></div>
             </div>
         </div>
 
-        <!-- PAGE 3: DOA -->
+        <!-- PAGE 3: DOA & TIPS -->
         <div class="page" id="page-2">
             <div class="content-spacing">
-                <h2 class="text-lg font-bold text-white mb-4 pt-2">Doa & Panduan</h2>
+                <h2 class="text-base font-bold text-white mb-2 pt-1">Doa & Panduan</h2>
                 
-                <!-- Doa Buka -->
-                <div class="prayer-card p-5 rounded-2xl mb-4 border-emerald-500/30">
-                    <div class="flex items-center gap-2 mb-3">
-                        <span class="text-2xl">🤲</span>
-                        <h3 class="font-bold text-emerald-400">Doa Buka Puasa</h3>
+                <!-- Kotak Doa 1 -->
+                <div class="prayer-card p-2 rounded-xl mb-2">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="text-lg">🤲</span>
+                        <h3 class="font-bold text-yellow-400 text-sm">Doa Buka Puasa</h3>
                     </div>
-                    <p class="arabic text-xl text-white text-right leading-relaxed mb-3">
+                    <p class="arabic text-base text-white text-right leading-relaxed mb-2">
                         اللَّهُمَّ لَكَ صُمْتُ وَبِكَ آمَنْتُ وَعَلَى رِزْقِكَ أَفْطَرْتُ
                     </p>
-                    <p class="text-xs text-emerald-200/70 italic mb-2">
+                    <p class="text-xs text-gray-300 italic mb-1">
                         "Allahumma laka shumtu wa bika aamantu wa 'ala rizqika aftartu"
                     </p>
-                    <p class="text-xs text-emerald-100/50">
+                    <p class="text-xs text-gray-400 leading-relaxed">
                         "Ya Allah, kepada-Mu aku berpuasa dan kepada-Mu aku beriman dan dengan rezeki-Mu aku berbuka."
                     </p>
                 </div>
 
-                <!-- Additional Doa -->
-                <div class="glass p-4 rounded-2xl mb-4">
-                    <p class="text-sm text-emerald-200/70 mb-2">Dilanjutkan dengan:</p>
-                    <p class="arabic text-lg text-white text-right mb-2">
+                <!-- Kotak Doa 2 -->
+                <div class="glass p-2 rounded-xl mb-2">
+                    <p class="text-xs text-gray-300 mb-2">Dilanjutkan dengan:</p>
+                    <p class="arabic text-sm text-white text-right mb-2">
                         ذَهَبَ الظَّمَأُ وَابْتَلَّتِ الْعُرُوقُ وَثَبَتَ الأَجْرُ إِنْ شَاءَ اللَّهُ
                     </p>
-                    <p class="text-xs text-emerald-100/50">
+                    <p class="text-xs text-gray-400 leading-relaxed">
                         "Telah hilang dahaga, urat-urat telah basah, dan telah ditetapkan pahala, insya Allah."
                     </p>
                 </div>
 
-                <!-- Tips -->
-                <div class="space-y-3">
-                    <h3 class="font-bold text-white text-sm uppercase tracking-wider">Tips Puasa di Sampit</h3>
-                    
-                    <div class="glass p-4 rounded-xl flex gap-3 items-start">
-                        <span class="text-2xl">💧</span>
-                        <div>
-                            <h4 class="font-semibold text-white text-sm">Hidrasi Cukup</h4>
-                            <p class="text-xs text-emerald-200/60 mt-1">Minum banyak air saat sahur karena cuaca Sampit cenderung panas dan lembap</p>
-                        </div>
-                    </div>
-
-                    <div class="glass p-4 rounded-xl flex gap-3 items-start">
-                        <span class="text-2xl">🍽️</span>
-                        <div>
-                            <h4 class="font-semibold text-white text-sm">Makan Bertahap</h4>
-                            <p class="text-xs text-emerald-200/60 mt-1">Mulai dengan kurma dan air, tunggu sebelum makan hidangan berat seperti ikan patin bakar</p>
-                        </div>
-                    </div>
-
-                    <div class="glass p-4 rounded-xl flex gap-3 items-start">
-                        <span class="text-2xl">🌴</span>
-                        <div>
-                            <h4 class="font-semibold text-white text-sm">Manfaatkan Waktu</h4>
-                            <p class="text-xs text-emerald-200/60 mt-1">Beraktivitas di pagi hari, istirahat saat siang panas, dan tarawih di masjid terdekat</p>
-                        </div>
+                <!-- Tips Puasa - Heading -->
+                <h3 class="font-bold text-white text-xs uppercase tracking-wider mb-2">Tips Puasa</h3>
+                
+                <!-- Kotak Tips 1 -->
+                <div class="glass p-1.5 rounded-lg flex gap-2 items-start mb-2">
+                    <span class="text-base">💧</span>
+                    <div>
+                        <h4 class="font-semibold text-white text-xs">Minum yang Cukup</h4>
+                        <p class="text-xs text-gray-400 leading-relaxed">Minum 8 gelas air antara iftar dan sahur untuk cegah dehidrasi</p>
                     </div>
                 </div>
 
-                <div class="h-4"></div>
+                <!-- Kotak Tips 2 -->
+                <div class="glass p-1.5 rounded-lg flex gap-2 items-start mb-2">
+                    <span class="text-base">🍽️</span>
+                    <div>
+                        <h4 class="font-semibold text-white text-xs">Makan Bertahap</h4>
+                        <p class="text-xs text-gray-400 leading-relaxed">Mulai dengan kurma dan air, tunggu 10 menit sebelum makan utama</p>
+                    </div>
+                </div>
+
+                <!-- Kotak Tips 3 -->
+                <div class="glass p-1.5 rounded-lg flex gap-2 items-start mb-2">
+                    <span class="text-base">😴</span>
+                    <div>
+                        <h4 class="font-semibold text-white text-xs">Tidur Siang</h4>
+                        <p class="text-xs text-gray-400 leading-relaxed">Istirahat 15-20 menit di siang hari untuk menjaga energi</p>
+                    </div>
+                </div>
+
+                <div class="h-1"></div>
             </div>
         </div>
 
-        <!-- PAGE 4: MENU KHAS -->
+        <!-- PAGE 4: MENU -->
         <div class="page" id="page-3">
             <div class="content-spacing">
-                <h2 class="text-lg font-bold text-white mb-4 pt-2">Menu Buka Khas Sampit</h2>
+                <h2 class="text-base font-bold text-white mb-3 pt-1">Menu Buka Puasa</h2>
                 
-                <!-- Categories -->
-                <div class="space-y-4">
-                    <!-- Pembuka -->
-                    <div class="glass p-4 rounded-2xl">
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="text-2xl">🍹</span>
-                            <h3 class="font-bold text-emerald-400">Pembuka</h3>
+                <div class="space-y-2">
+                    <div class="glass p-3 rounded-xl">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-lg">🍹</span>
+                            <h3 class="font-bold text-yellow-400 text-xs">Pembuka</h3>
                         </div>
-                        <div class="grid grid-cols-2 gap-2">
-                            <div class="bg-emerald-900/30 p-3 rounded-lg text-center">
-                                <p class="text-sm font-medium text-white">Kurma</p>
-                                <p class="text-xs text-emerald-300/60">3 butir</p>
+                        <div class="space-y-1">
+                            <div class="flex justify-between items-center p-1 bg-slate-800/30 rounded">
+                                <span class="text-xs text-white">Kurma</span>
+                                <span class="text-[10px] text-gray-400">3 butir</span>
                             </div>
-                            <div class="bg-emerald-900/30 p-3 rounded-lg text-center">
-                                <p class="text-sm font-medium text-white">Air Zam-zam</p>
-                                <p class="text-xs text-emerald-300/60">Dingin</p>
+                            <div class="flex justify-between items-center p-1 bg-slate-800/30 rounded">
+                                <span class="text-xs text-white">Air Zam-zam</span>
+                                <span class="text-[10px] text-gray-400">Hangat/dingin</span>
                             </div>
-                            <div class="bg-emerald-900/30 p-3 rounded-lg text-center">
-                                <p class="text-sm font-medium text-white">Es Kelapa</p>
-                                <p class="text-xs text-emerald-300/60">Segar alami</p>
+                            <div class="flex justify-between items-center p-1 bg-slate-800/30 rounded">
+                                <span class="text-xs text-white">Kolak Pisang</span>
+                                <span class="text-[10px] text-gray-400">Khas Nusantara</span>
                             </div>
-                            <div class="bg-emerald-900/30 p-3 rounded-lg text-center">
-                                <p class="text-sm font-medium text-white">Kolak Pisang</p>
-                                <p class="text-xs text-emerald-300/60">Manis</p>
+                            <div class="flex justify-between items-center p-1 bg-slate-800/30 rounded">
+                                <span class="text-xs text-white">Es Buah</span>
+                                <span class="text-[10px] text-gray-400">Segar</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Menu Utama -->
-                    <div class="glass p-4 rounded-2xl">
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="text-2xl">🍲</span>
-                            <h3 class="font-bold text-amber-400">Menu Khas Dayak & Melayu</h3>
+                    <div class="glass p-3 rounded-xl">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-lg">🍲</span>
+                            <h3 class="font-bold text-orange-400 text-xs">Menu Utama</h3>
                         </div>
-                        <div class="space-y-2">
-                            <div class="flex justify-between items-center p-2 bg-emerald-900/30 rounded-lg">
-                                <span class="text-sm text-white">Ikan Patin Bakar</span>
-                                <span class="text-xs text-emerald-300/60">Khas Sampit</span>
+                        <div class="space-y-1">
+                            <div class="flex justify-between items-center p-1 bg-slate-800/30 rounded">
+                                <span class="text-xs text-white">Nasi Putih/Merah</span>
+                                <span class="text-[10px] text-gray-400">Secukupnya</span>
                             </div>
-                            <div class="flex justify-between items-center p-2 bg-emerald-900/30 rounded-lg">
-                                <span class="text-sm text-white">Nasi Putih</span>
-                                <span class="text-xs text-emerald-300/60">Hangat</span>
+                            <div class="flex justify-between items-center p-1 bg-slate-800/30 rounded">
+                                <span class="text-xs text-white">Sayur Sop</span>
+                                <span class="text-[10px] text-gray-400">Hangat</span>
                             </div>
-                            <div class="flex justify-between items-center p-2 bg-emerald-900/30 rounded-lg">
-                                <span class="text-sm text-white">Sayur Asam</span>
-                                <span class="text-xs text-emerald-300/60">Segar</span>
+                            <div class="flex justify-between items-center p-1 bg-slate-800/30 rounded">
+                                <span class="text-xs text-white">Ikan Bakar Sampit</span>
+                                <span class="text-[10px] text-gray-400">Khas Kalteng</span>
                             </div>
-                            <div class="flex justify-between items-center p-2 bg-emerald-900/30 rounded-lg">
-                                <span class="text-sm text-white">Sambal Terasi</span>
-                                <span class="text-xs text-emerald-300/60">Pedas</span>
+                            <div class="flex justify-between items-center p-1 bg-slate-800/30 rounded">
+                                <span class="text-xs text-white">Ayam Bakar/Goreng</span>
+                                <span class="text-[10px] text-gray-400">Protein</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Penutup -->
-                    <div class="glass p-4 rounded-2xl">
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="text-2xl">🍮</span>
-                            <h3 class="font-bold text-purple-400">Penutup Khas</h3>
+                    <div class="glass p-3 rounded-xl">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-lg">🍮</span>
+                            <h3 class="font-bold text-purple-400 text-xs">Penutup</h3>
                         </div>
-                        <div class="flex gap-2 overflow-x-auto pb-2">
-                            <div class="flex-shrink-0 w-24 bg-emerald-900/30 p-3 rounded-lg text-center">
-                                <p class="text-sm font-medium text-white">Hinava</p>
-                                <p class="text-xs text-emerald-300/60">Ikan mentah</p>
+                        <div class="space-y-1">
+                            <div class="flex justify-between items-center p-1 bg-slate-800/30 rounded">
+                                <span class="text-xs text-white">Bubur Kampiun</span>
+                                <span class="text-[10px] text-gray-400">Minang</span>
                             </div>
-                            <div class="flex-shrink-0 w-24 bg-emerald-900/30 p-3 rounded-lg text-center">
-                                <p class="text-sm font-medium text-white">Tevor</p>
-                                <p class="text-xs text-emerald-300/60">Ubi kayu</p>
+                            <div class="flex justify-between items-center p-1 bg-slate-800/30 rounded">
+                                <span class="text-xs text-white">Dadiah</span>
+                                <span class="text-[10px] text-gray-400">Yogurt</span>
                             </div>
-                            <div class="flex-shrink-0 w-24 bg-emerald-900/30 p-3 rounded-lg text-center">
-                                <p class="text-sm font-medium text-white">Buras</p>
-                                <p class="text-xs text-emerald-300/60">Ketan</p>
+                            <div class="flex justify-between items-center p-1 bg-slate-800/30 rounded">
+                                <span class="text-xs text-white">Pisang Salai</span>
+                                <span class="text-[10px] text-gray-400">Manis</span>
                             </div>
-                            <div class="flex-shrink-0 w-24 bg-emerald-900/30 p-3 rounded-lg text-center">
-                                <p class="text-sm font-medium text-white">Kopi Sampit</p>
-                                <p class="text-xs text-emerald-300/60">Hitam</p>
+                            <div class="flex justify-between items-center p-1 bg-slate-800/30 rounded">
+                                <span class="text-xs text-white">Teh Talua</span>
+                                <span class="text-[10px] text-gray-400">Hangat</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="h-4"></div>
+                <div class="h-1"></div>
             </div>
         </div>
     </div>
 
-    <!-- Bottom Navigation -->
-    <nav class="bottom-nav glass-strong px-6 py-4 pb-6">
+    <nav class="bottom-nav glass-strong px-6 pt-2 pb-5">
         <div class="flex justify-around items-center max-w-md mx-auto">
-            <button onclick="goToPage(0)" class="nav-item flex flex-col items-center gap-1 group" data-page="0">
-                <svg class="w-6 h-6 text-gray-400 group-[.active]:text-emerald-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button onclick="goToPage(0)" class="nav-item flex flex-col items-center gap-0.5 group" data-page="0">
+                <svg class="w-5 h-5 text-gray-400 group-[.active]:text-yellow-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                 </svg>
-                <span class="text-[10px] text-gray-400 group-[.active]:text-emerald-400">Beranda</span>
+                <span class="text-[10px] text-gray-400 group-[.active]:text-yellow-400">Beranda</span>
             </button>
             
-            <button onclick="goToPage(1)" class="nav-item flex flex-col items-center gap-1 group" data-page="1">
-                <svg class="w-6 h-6 text-gray-400 group-[.active]:text-emerald-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button onclick="goToPage(1)" class="nav-item flex flex-col items-center gap-0.5 group" data-page="1">
+                <svg class="w-5 h-5 text-gray-400 group-[.active]:text-yellow-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                 </svg>
-                <span class="text-[10px] text-gray-400 group-[.active]:text-emerald-400">Jadwal</span>
+                <span class="text-[10px] text-gray-400 group-[.active]:text-yellow-400">Jadwal</span>
             </button>
             
-            <button onclick="goToPage(2)" class="nav-item flex flex-col items-center gap-1 group" data-page="2">
-                <svg class="w-6 h-6 text-gray-400 group-[.active]:text-emerald-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button onclick="goToPage(2)" class="nav-item flex flex-col items-center gap-0.5 group" data-page="2">
+                <svg class="w-5 h-5 text-gray-400 group-[.active]:text-yellow-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                 </svg>
-                <span class="text-[10px] text-gray-400 group-[.active]:text-emerald-400">Doa</span>
+                <span class="text-[10px] text-gray-400 group-[.active]:text-yellow-400">Doa</span>
             </button>
             
-            <button onclick="goToPage(3)" class="nav-item flex flex-col items-center gap-1 group" data-page="3">
-                <svg class="w-6 h-6 text-gray-400 group-[.active]:text-emerald-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button onclick="goToPage(3)" class="nav-item flex flex-col items-center gap-0.5 group" data-page="3">
+                <svg class="w-5 h-5 text-gray-400 group-[.active]:text-yellow-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                 </svg>
-                <span class="text-[10px] text-gray-400 group-[.active]:text-emerald-400">Menu</span>
+                <span class="text-[10px] text-gray-400 group-[.active]:text-yellow-400">Menu</span>
             </button>
         </div>
         
-        <!-- Page Indicators -->
-        <div class="flex justify-center gap-2 mt-3">
+        <div class="flex justify-center gap-1.5 mt-3">
             <div class="nav-dot active" data-index="0"></div>
             <div class="nav-dot" data-index="1"></div>
             <div class="nav-dot" data-index="2"></div>
@@ -521,8 +520,8 @@
     </nav>
 
     <script>
-        // Data Jadwal Imsakiyah Kotawaringin Timur - Februari 2026
-        // Sumber: bimasislam.kemenag.go.id [^10^]
+        // DATA JADWAL IMSAKIYAH KOTAWARINGIN TIMUR - FEBRUARI 2026
+        // Sumber: Tirto.id / Bimas Islam Kemenag RI
         const scheduleData = [
             { date: "1 Feb", fullDate: "Minggu, 01 Februari 2026", imsak: "04:07", subuh: "04:17", dzuhur: "11:45", ashar: "15:06", maghrib: "17:51", isya: "19:03" },
             { date: "2 Feb", fullDate: "Senin, 02 Februari 2026", imsak: "04:07", subuh: "04:17", dzuhur: "11:45", ashar: "15:06", maghrib: "17:52", isya: "19:03" },
@@ -554,18 +553,19 @@
             { date: "28 Feb", fullDate: "Sabtu, 28 Februari 2026", imsak: "04:11", subuh: "04:21", dzuhur: "11:44", ashar: "14:53", maghrib: "17:49", isya: "18:57" }
         ];
 
-        // State
         let currentPage = 0;
-        let startX = 0;
-        let currentX = 0;
-        let isDragging = false;
 
-        // Elements
         const container = document.getElementById('appContainer');
         const dots = document.querySelectorAll('.nav-dot');
         const navItems = document.querySelectorAll('.nav-item');
 
-        // Navigation
+        function to12Hour(time24) {
+            const [hours, minutes] = time24.split(':').map(Number);
+            const period = hours >= 12 ? 'PM' : 'AM';
+            const hours12 = hours % 12 || 12;
+            return `${hours12}:${String(minutes).padStart(2, '0')} ${period}`;
+        }
+
         function goToPage(page) {
             currentPage = Math.max(0, Math.min(3, page));
             container.style.transform = `translateX(-${currentPage * 25}%)`;
@@ -580,183 +580,124 @@
                 const span = item.querySelector('span');
                 if (idx === currentPage) {
                     svg.classList.remove('text-gray-400');
-                    svg.classList.add('text-emerald-400');
+                    svg.classList.add('text-yellow-400');
                     span.classList.remove('text-gray-400');
-                    span.classList.add('text-emerald-400');
+                    span.classList.add('text-yellow-400');
                 } else {
                     svg.classList.add('text-gray-400');
-                    svg.classList.remove('text-emerald-400');
+                    svg.classList.remove('text-yellow-400');
                     span.classList.add('text-gray-400');
-                    span.classList.remove('text-emerald-400');
+                    span.classList.remove('text-yellow-400');
                 }
             });
         }
 
-        // Touch events
-        container.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
-            isDragging = true;
-            container.style.transition = 'none';
-        }, { passive: true });
-
-        container.addEventListener('touchmove', (e) => {
-            if (!isDragging) return;
-            currentX = e.touches[0].clientX;
-            const diff = currentX - startX;
-            const offset = -currentPage * 25 + (diff / window.innerWidth) * 25;
-            container.style.transform = `translateX(${offset}%)`;
-        }, { passive: true });
-
-        container.addEventListener('touchend', (e) => {
-            if (!isDragging) return;
-            isDragging = false;
-            container.style.transition = 'transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1)';
-            
-            const diff = currentX - startX;
-            const threshold = window.innerWidth * 0.2;
-            
-            if (Math.abs(diff) > threshold) {
-                if (diff > 0 && currentPage > 0) {
-                    goToPage(currentPage - 1);
-                } else if (diff < 0 && currentPage < 3) {
-                    goToPage(currentPage + 1);
-                } else {
-                    goToPage(currentPage);
-                }
-            } else {
-                goToPage(currentPage);
-            }
-        });
-
-        // Mouse events
-        container.addEventListener('mousedown', (e) => {
-            startX = e.clientX;
-            isDragging = true;
-            container.style.transition = 'none';
-        });
-
-        container.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-            currentX = e.clientX;
-            const diff = currentX - startX;
-            const offset = -currentPage * 25 + (diff / window.innerWidth) * 25;
-            container.style.transform = `translateX(${offset}%)`;
-        });
-
-        container.addEventListener('mouseup', (e) => {
-            if (!isDragging) return;
-            isDragging = false;
-            container.style.transition = 'transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1)';
-            
-            const diff = currentX - startX;
-            const threshold = window.innerWidth * 0.2;
-            
-            if (Math.abs(diff) > threshold) {
-                if (diff > 0 && currentPage > 0) {
-                    goToPage(currentPage - 1);
-                } else if (diff < 0 && currentPage < 3) {
-                    goToPage(currentPage + 1);
-                } else {
-                    goToPage(currentPage);
-                }
-            } else {
-                goToPage(currentPage);
-            }
-        });
-
-        container.addEventListener('mouseleave', () => {
-            if (isDragging) {
-                isDragging = false;
-                container.style.transition = 'transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1)';
-                goToPage(currentPage);
-            }
-        });
-
-        // Time functions
         function timeToMinutes(time) {
             const [h, m] = time.split(':').map(Number);
             return h * 60 + m;
         }
 
         function getToday() {
-            return new Date(2026, 1, 22); // Feb 22, 2026
+            return new Date();
         }
 
-        // Render schedule
         function renderSchedule() {
             const list = document.getElementById('schedule-list');
             const today = getToday();
-            const todayStr = today.getDate() + ' Feb';
+            const todayDay = today.getDate();
+            const todayMonth = today.getMonth();
+            const todayYear = today.getFullYear();
             
             list.innerHTML = scheduleData.map(item => {
-                const isToday = item.date === todayStr;
+                const itemDate = parseInt(item.date.split(' ')[0]);
+                const isToday = itemDate === todayDay && todayMonth === 1 && todayYear === 2026;
+                const dayName = item.fullDate.split(',')[0];
+                const dateParts = item.date.split(' ');
+                const dayNum = dateParts[0];
+                const monthName = dateParts[1];
+                
                 return `
-                    <div class="schedule-item ${isToday ? 'schedule-today' : ''}">
+                    <div class="schedule-row ${isToday ? 'schedule-today' : ''}">
                         <div>
-                            <p class="text-sm font-medium ${isToday ? 'text-emerald-400' : 'text-white'}">${item.date}</p>
-                            <p class="text-[10px] text-emerald-600">${item.fullDate.split(',')[0]}</p>
+                            <p class="text-[10px] font-medium ${isToday ? 'text-yellow-400' : 'text-white'} leading-tight">
+                                ${dayName}, ${dayNum} ${monthName}
+                            </p>
                         </div>
-                        <p class="text-center text-sm text-blue-400 time-font">${item.imsak}</p>
-                        <p class="text-center text-sm text-amber-400 font-semibold time-font">${item.maghrib}</p>
-                        <p class="text-center text-sm text-gray-400 time-font">${item.isya}</p>
+                        <p class="text-[10px] text-blue-400 time-font">${to12Hour(item.imsak)}</p>
+                        <p class="text-[10px] text-orange-400 font-semibold time-font">${to12Hour(item.maghrib)}</p>
+                        <p class="text-[10px] text-gray-400 time-font">${to12Hour(item.isya)}</p>
                     </div>
                 `;
             }).join('');
         }
 
-        // Search
-        document.getElementById('search-input').addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase();
-            const items = document.querySelectorAll('.schedule-item');
-            
-            items.forEach((item, idx) => {
-                const data = scheduleData[idx];
-                const match = data.fullDate.toLowerCase().includes(query) || 
-                             data.date.toLowerCase().includes(query);
-                item.style.display = match ? 'grid' : 'none';
-            });
-        });
-
-        // Update home
         function updateHome() {
+            const now = new Date();
+            const currentMin = now.getHours() * 60 + now.getMinutes();
+            const currentSec = now.getSeconds();
+            
             const today = getToday();
-            const todayData = scheduleData.find(d => d.date === (today.getDate() + ' Feb'));
+            const todayDay = today.getDate();
+            const todayMonth = today.getMonth();
+            const todayYear = today.getFullYear();
+            
+            let todayIndex = scheduleData.findIndex(d => {
+                const dayNum = parseInt(d.date.split(' ')[0]);
+                return dayNum === todayDay && todayMonth === 1 && todayYear === 2026;
+            });
+            
+            if (todayIndex === -1) {
+                todayIndex = 0;
+            }
+            
+            const todayData = scheduleData[todayIndex];
             
             if (!todayData) return;
 
-            document.getElementById('home-imsak').textContent = todayData.imsak;
-            document.getElementById('home-subuh').textContent = todayData.subuh;
-            document.getElementById('home-maghrib').textContent = todayData.maghrib;
-            document.getElementById('home-isya').textContent = todayData.isya;
+            document.getElementById('home-imsak').textContent = to12Hour(todayData.imsak);
+            document.getElementById('home-subuh').textContent = to12Hour(todayData.subuh);
+            document.getElementById('home-maghrib').textContent = to12Hour(todayData.maghrib);
+            document.getElementById('home-isya').textContent = to12Hour(todayData.isya);
 
-            const now = new Date();
-            const currentMin = now.getHours() * 60 + now.getMinutes();
             const imsakMin = timeToMinutes(todayData.imsak);
             const maghribMin = timeToMinutes(todayData.maghrib);
             const isyaMin = timeToMinutes(todayData.isya);
 
-            let status, label, target, progress;
+            let status, label, targetMin, progress;
+            let showCountdown = true;
+            let isNextDay = false;
 
             if (currentMin < imsakMin) {
-                status = 'Waktu Sahur';
+                status = 'Sahur';
                 label = 'Menuju imsak';
-                target = imsakMin;
+                targetMin = imsakMin;
                 progress = 0;
             } else if (currentMin < maghribMin) {
-                status = 'Sedang Berpuasa';
-                label = 'Menuju buka puasa';
-                target = maghribMin;
+                status = 'Berpuasa';
+                label = 'Menuju buka';
+                targetMin = maghribMin;
                 progress = ((currentMin - imsakMin) / (maghribMin - imsakMin)) * 100;
             } else if (currentMin < isyaMin) {
-                status = 'Waktu Berbuka';
+                status = 'Buka Puasa';
                 label = 'Menuju isya';
-                target = isyaMin;
+                targetMin = isyaMin;
                 progress = 100;
             } else {
                 status = 'Istirahat';
-                label = 'Puasa selesai';
-                target = isyaMin;
-                progress = 100;
+                isNextDay = true;
+                
+                const nextDayIndex = todayIndex + 1;
+                if (nextDayIndex < scheduleData.length) {
+                    const nextDayData = scheduleData[nextDayIndex];
+                    label = 'Menuju imsak besok';
+                    targetMin = timeToMinutes(nextDayData.imsak) + (24 * 60);
+                    progress = 100;
+                } else {
+                    label = 'Selesai';
+                    targetMin = isyaMin;
+                    progress = 100;
+                    showCountdown = false;
+                }
             }
 
             document.getElementById('home-status').textContent = status;
@@ -769,36 +710,113 @@
             circle.style.strokeDashoffset = offset;
             document.getElementById('progress-text').textContent = Math.round(progress) + '%';
 
-            const diff = target - currentMin;
-            const h = Math.floor(diff / 60);
-            const m = diff % 60;
-            const s = 59 - now.getSeconds();
-            document.getElementById('home-countdown').textContent = 
-                `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+            if (showCountdown) {
+                const nowTotalSec = currentMin * 60 + currentSec;
+                let targetTotalSec;
+                
+                if (isNextDay && todayIndex + 1 < scheduleData.length) {
+                    const nextDayData = scheduleData[todayIndex + 1];
+                    targetTotalSec = (24 * 60 * 60) + (timeToMinutes(nextDayData.imsak) * 60);
+                } else {
+                    targetTotalSec = targetMin * 60;
+                }
+                
+                let diffSec = targetTotalSec - nowTotalSec;
+                
+                if (diffSec < 0) diffSec = 0;
+                
+                const h = Math.floor(diffSec / 3600);
+                const m = Math.floor((diffSec % 3600) / 60);
+                const s = diffSec % 60;
+                
+                document.getElementById('home-countdown').textContent = 
+                    `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+            } else {
+                document.getElementById('home-countdown').textContent = '00:00:00';
+            }
 
-            const prayers = [
+            // Logika untuk menentukan jadwal selanjutnya
+            let nextPrayer = null;
+            let isShowingTomorrow = false;
+            let isShowingToday = false;
+            
+            // Cek semua jadwal sholat hari ini yang belum lewat
+            const todayPrayers = [
+                { name: 'Imsak', time: todayData.imsak, done: currentMin > timeToMinutes(todayData.imsak) },
+                { name: 'Subuh', time: todayData.subuh, done: currentMin > timeToMinutes(todayData.subuh) },
                 { name: 'Dzuhur', time: todayData.dzuhur, done: currentMin > timeToMinutes(todayData.dzuhur) },
                 { name: 'Ashar', time: todayData.ashar, done: currentMin > timeToMinutes(todayData.ashar) },
                 { name: 'Maghrib', time: todayData.maghrib, done: currentMin > timeToMinutes(todayData.maghrib) },
                 { name: 'Isya', time: todayData.isya, done: currentMin > timeToMinutes(todayData.isya) }
-            ].filter(p => !p.done).slice(0, 3);
+            ].filter(p => !p.done);
+            
+            if (todayPrayers.length > 0) {
+                // Masih ada jadwal hari ini yang belum lewat
+                nextPrayer = todayPrayers[0];
+                isShowingToday = true;
+            } else {
+                // Semua jadwal hari ini sudah lewat, ambil Imsak besok
+                isShowingTomorrow = true;
+                const nextDayIndex = todayIndex + 1;
+                if (nextDayIndex < scheduleData.length) {
+                    const nextDayData = scheduleData[nextDayIndex];
+                    nextPrayer = { name: 'Imsak', time: nextDayData.imsak, done: false, isTomorrow: true };
+                }
+            }
 
-            document.getElementById('next-prayer-list').innerHTML = prayers.map(p => `
-                <div class="flex justify-between items-center p-2 rounded-lg ${p.name === 'Maghrib' ? 'bg-amber-500/20 border border-amber-500/30' : 'bg-emerald-900/30'}">
-                    <span class="text-sm ${p.name === 'Maghrib' ? 'text-amber-400 font-semibold' : 'text-white'}">${p.name}</span>
-                    <span class="text-sm time-font ${p.name === 'Maghrib' ? 'text-amber-400' : 'text-emerald-300'}">${p.time}</span>
-                </div>
-            `).join('');
+            // Ambil nama hari yang benar dari data
+            let html = '';
+            
+            if (isShowingToday && nextPrayer) {
+                // Ambil nama hari dari fullDate (format: "Minggu, 01 Februari 2026")
+                const dayName = todayData.fullDate.split(',')[0];
+                html += `
+                    <div class="current-day-indicator mb-3">
+                        <span class="text-xs text-yellow-300 font-semibold">📅 Sekarang (${dayName})</span>
+                    </div>
+                `;
+            } else if (isShowingTomorrow && nextPrayer) {
+                const nextDayData = scheduleData[todayIndex + 1];
+                const dayName = nextDayData.fullDate.split(',')[0];
+                html += `
+                    <div class="next-day-indicator mb-3">
+                        <span class="text-xs text-blue-300 font-semibold">📅 Besok (${dayName})</span>
+                    </div>
+                `;
+            }
+            
+            if (nextPrayer) {
+                const isMaghrib = nextPrayer.name === 'Maghrib';
+                const isTomorrow = nextPrayer.isTomorrow || false;
+                const bgClass = isMaghrib ? 'bg-orange-500/20 border-2 border-orange-500/50' : 'bg-slate-800/50 border border-slate-700';
+                const nameClass = isMaghrib ? 'text-orange-400 font-bold text-base' : (isTomorrow ? 'text-blue-300 font-bold text-base' : 'text-white font-bold text-base');
+                const timeClass = isMaghrib ? 'text-orange-400 text-lg' : (isTomorrow ? 'text-blue-300 text-lg' : 'text-gray-300 text-lg');
+                const icon = isTomorrow ? '🌅 ' : '⏰ ';
+                
+                html += `
+                    <div class="flex justify-between items-center p-3 rounded-xl ${bgClass}">
+                        <span class="${nameClass}">${icon}${nextPrayer.name}</span>
+                        <span class="time-font ${timeClass}">${to12Hour(nextPrayer.time)}</span>
+                    </div>
+                `;
+            } else {
+                html = '<p class="text-sm text-gray-500 text-center py-4">Tidak ada jadwal tersedia</p>';
+            }
+            
+            document.getElementById('next-prayer-list').innerHTML = html;
         }
 
-        // Clock
         function updateClock() {
             const now = new Date();
+            let hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const period = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12 || 12;
             document.getElementById('live-clock').textContent = 
-                now.toLocaleTimeString('id-ID', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
+                `${hours}:${minutes}:${seconds} ${period}`;
         }
 
-        // Init
         renderSchedule();
         goToPage(0);
         updateHome();
