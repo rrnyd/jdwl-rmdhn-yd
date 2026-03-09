@@ -5,14 +5,32 @@ const path = require('path');
 const indexPath = path.join(__dirname, '..', 'index.html');
 const htmlContent = fs.readFileSync(indexPath, 'utf-8');
 
-// Extract scheduleData dari HTML menggunakan regex
-const scheduleMatch = htmlContent.match(/const scheduleData = (\[.*?\]);/s);
+// Extract scheduleData - handle JavaScript object format (bukan JSON)
+const scheduleMatch = htmlContent.match(/const scheduleData = (\[[\s\S]*?\]);/);
 if (!scheduleMatch) {
     console.error('Tidak dapat menemukan scheduleData');
     process.exit(1);
 }
 
-const scheduleData = JSON.parse(scheduleMatch[1]);
+// Convert JavaScript object ke JSON valid
+let jsObject = scheduleMatch[1]
+    // Tambahkan quotes ke property names yang tidak pakai
+    .replace(/(\s+)([a-zA-Z_]+):/g, '$1"$2":')
+    // Fix single quotes jika ada
+    .replace(/'/g, '"');
+
+// Fix trailing commas
+jsObject = jsObject.replace(/,(\s*[\]}])/g, '$1');
+
+let scheduleData;
+try {
+    scheduleData = JSON.parse(jsObject);
+} catch (e) {
+    console.error('Gagal parse:', e.message);
+    console.log('Konten yang dicoba diparse (first 500 chars):');
+    console.log(jsObject.substring(0, 500));
+    process.exit(1);
+}
 
 // Helper functions
 function timeToMinutes(time) {
@@ -42,28 +60,21 @@ const currentSec = wibTime.getUTCSeconds();
 
 // Cari data hari ini
 const todayDay = wibTime.getUTCDate();
-const todayMonth = wibTime.getUTCMonth(); // 0-11
+const todayMonth = wibTime.getUTCMonth();
 const todayYear = wibTime.getUTCFullYear();
 
 let todayIndex = scheduleData.findIndex(d => {
     const dayNum = parseInt(d.date.split(' ')[0]);
-    // Februari = index 1
     return dayNum === todayDay && todayMonth === 1 && todayYear === 2026;
 });
 
-// Jika tidak ketemu, cari terdekat
-if (todayIndex === -1) {
-    todayIndex = 0;
-}
+if (todayIndex === -1) todayIndex = 0;
 
 const todayData = scheduleData[todayIndex] || scheduleData[0];
 const tomorrowData = scheduleData[todayIndex + 1] || null;
 
-// Hitung status dan next event
+// Hitung status
 const imsakMin = timeToMinutes(todayData.imsak);
-const subuhMin = timeToMinutes(todayData.subuh);
-const dzuhurMin = timeToMinutes(todayData.dzuhur);
-const asharMin = timeToMinutes(todayData.ashar);
 const maghribMin = timeToMinutes(todayData.maghrib);
 const isyaMin = timeToMinutes(todayData.isya);
 
@@ -100,14 +111,11 @@ if (currentMin < imsakMin) {
 
 // Hitung countdown
 const nowTotalSec = currentMin * 60 + currentSec;
-let targetTotalSec;
-if (isNextDay && tomorrowData) {
-    targetTotalSec = (24 * 60 * 60) + (timeToMinutes(tomorrowData.imsak) * 60);
-} else {
-    targetTotalSec = targetMin * 60;
-}
-let diffSec = targetTotalSec - nowTotalSec;
-if (diffSec < 0) diffSec = 0;
+let targetTotalSec = isNextDay && tomorrowData 
+    ? (24 * 60 * 60) + (timeToMinutes(tomorrowData.imsak) * 60)
+    : targetMin * 60;
+    
+let diffSec = Math.max(0, targetTotalSec - nowTotalSec);
 
 // Generate API JSON
 const apiData = {
@@ -156,15 +164,7 @@ const apiData = {
         maghrib_12h: to12Hour(todayData.maghrib),
         isya: todayData.isya,
         isya_12h: to12Hour(todayData.isya)
-    },
-    upcoming_prayers: [
-        { name: 'Imsak', time: todayData.imsak, done: currentMin > imsakMin },
-        { name: 'Subuh', time: todayData.subuh, done: currentMin > subuhMin },
-        { name: 'Dzuhur', time: todayData.dzuhur, done: currentMin > dzuhurMin },
-        { name: 'Ashar', time: todayData.ashar, done: currentMin > asharMin },
-        { name: 'Maghrib', time: todayData.maghrib, done: currentMin > maghribMin },
-        { name: 'Isya', time: todayData.isya, done: currentMin > isyaMin }
-    ].filter(p => !p.done).slice(0, 3)
+    }
 };
 
 // Tulis ke api.json
