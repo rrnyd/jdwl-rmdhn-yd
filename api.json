@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-04-28T15:35:55.059Z",
+    "generated_at": "2026-04-29T01:15:56.185Z",
     "timezone": "Asia/Jakarta (WIB)",
     "source": "Tirto.id / Bimas Islam Kemenag RI",
     "location": {
@@ -11,24 +11,24 @@
   },
   "current": {
     "date": "Minggu, 01 Februari 2026",
-    "time_now": "15:35:55",
-    "status": "Berpuasa",
-    "progress_percent": 83,
+    "time_now": "01:15:56",
+    "status": "Sahur",
+    "progress_percent": 0,
     "ramadan_day": 1
   },
   "countdown": {
-    "target_event": "Buka Puasa",
-    "target_time": "17:51",
-    "target_time_12h": "5:51 PM",
-    "remaining": "02:15:05",
-    "remaining_seconds": 8105,
+    "target_event": "Imsak",
+    "target_time": "04:07",
+    "target_time_12h": "4:07 AM",
+    "remaining": "02:51:04",
+    "remaining_seconds": 10264,
     "is_tomorrow": false
   },
   "next_prayer": {
-    "name": "Buka Puasa",
-    "time": "17:51",
-    "time_12h": "5:51 PM",
-    "type": "buka",
+    "name": "Imsak",
+    "time": "04:07",
+    "time_12h": "4:07 AM",
+    "type": "imsak",
     "is_tomorrow": false
   },
   "today_schedule": {
